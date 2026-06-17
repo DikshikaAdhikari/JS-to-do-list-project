@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DOM Events To-Do Project</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      font-family: Arial;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 40px;
+    }
+
+    h1 {
+      color: #38bdf8;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      width: 250px;
+      border-radius: 8px;
+      border: 2px solid #38bdf8;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #38bdf8;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    ul {
+      width: 320px;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+      background: #1e293b;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .done {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .deleteBtn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .deleteBtn:hover {
+      background: darkred;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>JS Practice Todo</h1>
+
+  <!-- FORM (important for preventDefault) -->
+  <form id="todoForm">
+    <input type="text" id="inputBox" placeholder="Enter task...">
+    <button type="submit">Enter</button>
+  </form>
+
+  <ul id="list"></ul>
+
+  <script>
+    const form = document.getElementById("todoForm");
+    const input = document.getElementById("inputBox");
+    const list = document.getElementById("list");
+
+    // INPUT EVENT (real-time typing)
+    input.addEventListener("input", (e) => {
+      console.log("Typing:", e.target.value);
+    });
+
+    // KEYDOWN EVENT (Enter key)
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        console.log("Enter pressed");
+      }
+    });
+
+    // FORM SUBMIT EVENT
+    form.addEventListener("submit", (e) => {
+      e.preventDefault(); // prevents page reload
+
+      const task = input.value.trim();
+      if (task === "") return;
+
+      list.innerHTML += `
+        <li>
+          <span class="taskText">${task}</span>
+          <button class="deleteBtn">Delete</button>
+        </li>
+      `;
+
+      input.value = "";
+    });
+
+    // EVENT DELEGATION (uses e.target)
+    list.addEventListener("click", (e) => {
+
+      console.log("Clicked element:", e.target);
+
+      // DELETE BUTTON
+      if (e.target.classList.contains("deleteBtn")) {
+        e.target.parentElement.style.display = "none";
+      }
+
+      // MARK DONE (click text)
+      if (e.target.classList.contains("taskText")) {
+        e.target.classList.toggle("done");
+      }
+    });
+
+    // MOUSEOVER EVENT
+    list.addEventListener("mouseover", (e) => {
+      if (e.target.tagName === "LI") {
+        e.target.style.background = "#334155";
+      }
+    });
+
+    list.addEventListener("mouseout", (e) => {
+      if (e.target.tagName === "LI") {
+        e.target.style.background = "#1e293b";
+      }
+    });
+
+  </script>
+
+</body>
+</html>
