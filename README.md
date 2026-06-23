@@ -61,13 +61,13 @@ Through this project, I learned how to:
 - Improve user experience with responsive design.
 - Organize JavaScript code for better readability and maintainability.
 
+
 ## 🚀 How to Run the Project
 
 1. Clone this repository.
 
 ```bash
 git clone https://github.com/DikshikaAdhikari/JS-to-do-list-project.git
-```
 
 2. Open the project folder.
 
