@@ -48,8 +48,6 @@ This project demonstrates the fundamentals of JavaScript by creating a fully fun
 - Class Manipulation
 - Input Validation
 
-```
-
 ## 🎯 Learning Outcomes
 
 Through this project, I learned how to:
