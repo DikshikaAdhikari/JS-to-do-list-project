@@ -64,7 +64,7 @@ Through this project, I learned how to:
 
 1. Clone this repository.
 
-```bash
+bash
 git clone https://github.com/DikshikaAdhikari/JS-to-do-list-project.git
 
 2. Open the project folder.
